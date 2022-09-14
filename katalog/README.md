@@ -21,4 +21,9 @@ Sebagai _web framework_, Django membutuhkan suatu cara untuk menghasilkan HTML s
 Cara kerja penanganan permintaan (_request_) client ke web aplikasi berbasis Django dan responsnya berawal dari client yang mengirimkan HTTP request kepada server. HTTP request tersebut akan diproses oleh urls.py Berkas urls.py akan melakukan _routing_ antara views yang menangani request tersebut dengan suatu URL. Dengan kata lain URL tersebut akan dipetakan kepada views yang sesuai. Selanjutnya, setelah dilakukan routing, request akan diteruskan kepada view yang sesuai di berkas views.py.Berkas views.py adalah berkas yang akan menangani request dari client dan menentukan data apa yang perlu dipakai dari database melalui berkas models.py. Selain itu, berkas view function juga dapat mengupdate data model dari models.py tersebut sesuai request client. Kemudian data tersebut diproses dan berkas views.py akan menentukan apa yang akan ditampilkan pada _display_ atau _interface_ pengguna menggunakan berkas html pada template. Berkas html tersebut juga akan menampilkan konten sesuai view function dan juga dapat membaca data dari function tersebut. Selanjutnya, setelah memproses hal-hal yang telah disebutkan, views.py akan mengirimkan HTTP response berupa tampilan kepada client sesuai request.
 
 2. Jelaskan kenapa menggunakan virtual environment? Apakah kita tetap dapat membuat aplikasi web berbasis Django tanpa menggunakan virtual environment?
-3. Jelaskan bagaimana cara kamu mengimplementasikan poin 1 sampai dengan 4 di atas.
+
+Sebuah virtual environment adalah sebuah Python environment, di mana Python interpreter, libraries, dan scripts yang telah diinstalasi pada virtual environment tersebut, sehingga hal-hal tersebut terisolasi dari virtual environment lain. Alasan kita menggunakan virtual environment adalah untuk membantu kita dalam menjaga ketergantungan (_dependencies_) dari proyek yang berbeda.
+
+Kita tetap dapat membuat suatu aplikasi web berbasis Django tanpa menggunakan virtual environment. Meskipun demikian, hal tersebut tidak mudah untuk dilakukan.
+
+4. Jelaskan bagaimana cara kamu mengimplementasikan poin 1 sampai dengan 4 di atas.
