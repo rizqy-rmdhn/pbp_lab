@@ -6,7 +6,7 @@ Kelas: PBP - F
 
 Kode Asdos: DRY
 
-Link Heroku: [https://tugas2pbpkiram.herokuapp.com/](https://tugas2pbpkiram.herokuapp.com/katalog/)
+Link Heroku: [https://tugas2pbpkiram.herokuapp.com/katalog/](https://tugas2pbpkiram.herokuapp.com/katalog/)
 
 1. Buatlah bagan yang berisi request client ke web aplikasi berbasis Django beserta responnya dan jelaskan pada bagan tersebut kaitan antara urls.py, views.py, models.py, dan berkas html;
 
