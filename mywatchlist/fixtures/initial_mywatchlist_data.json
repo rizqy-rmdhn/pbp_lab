@@ -1,0 +1,13 @@
+[
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 1,
+        "fields": {
+            "watched": 1,
+            "title": "Heartstopper",
+            "rating": 5,
+            "release_date": "2022-03-14",
+            "review": "Cute Love Story"
+        }
+    }
+]
