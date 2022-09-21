@@ -9,5 +9,113 @@
             "release_date": "2022-03-14",
             "review": "Cute Love Story"
         }
+    },
+
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 2,
+        "fields": {
+            "watched": 0,
+            "title": "She-Hulk: Attorney At Law",
+            "rating": 2,
+            "release_date": "2022-09-01",
+            "review": "Angry grrr green lawyer woman doing things marvel"
+        }
+    },
+
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 3,
+        "fields": {
+            "watched": 1,
+            "title": "Mencuri Raden Saleh",
+            "rating": 4,
+            "release_date": "2022-09-14",
+            "review": "Castnya cakep"
+        }
+    },
+
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 4,
+        "fields": {
+            "watched": 0,
+            "title": "Dek Depe Mencari Otak",
+            "rating": 1,
+            "release_date": "2021-01-01",
+            "review": "Capek :("
+        }
+    },
+
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 5,
+        "fields": {
+            "watched": 0,
+            "title": "Fight Club",
+            "rating": 5,
+            "release_date": "1999-11-11",
+            "review": "idk but he recommended it to me so im gonna watch it i guess"
+        }
+    },
+
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 6,
+        "fields": {
+            "watched": 1,
+            "title": "Belle",
+            "rating": 3,
+            "release_date": "2022-01-12",
+            "review": "the songs are *chef's kiss"
+        }
+    },
+
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 7,
+        "fields": {
+            "watched": 1,
+            "title": "Jumanji: The Next Level",
+            "rating": 2,
+            "release_date": "2019-12-04",
+            "review": "Watched it today during movie night w/ besties <3"
+        }
+    },
+
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 8,
+        "fields": {
+            "watched": 1,
+            "title": "Taylor Swift Folklore: The Long Pond Studio Session",
+            "rating": 5,
+            "release_date": "2020-11-25",
+            "review": "CHAMPAGNE PROBLEMS SUPREMACY"
+        }
+    },
+
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 9,
+        "fields": {
+            "watched": 0,
+            "title": "Sebuah FILM",
+            "rating": 5,
+            "release_date": "2012-12-12",
+            "review": "Belum nonton"
+        }
+    },
+
+    {
+        "model": "mywatchlist.mywatchlist",
+        "pk": 10,
+        "fields": {
+            "watched": 1,
+            "title": "An end to us",
+            "rating": 2,
+            "release_date": "2022-09-16",
+            "review": "i honestly don't know what are we and it's tiring"
+        }
     }
 ]

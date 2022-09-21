@@ -21,7 +21,7 @@
     {% comment %} Add the data below this line {% endcomment %}
     {% for mywatchlist in list_mywatchlist %}
       <tr>
-          <th>{{mywatchlist.watched}}</th>
+          <th>{{mywatchlist.get_watched_display}}</th>
           <th>{{mywatchlist.title}}</th>
           <th>{{mywatchlist.rating}}</th>
           <th>{{mywatchlist.release_date}}</th>
