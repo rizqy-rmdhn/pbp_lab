@@ -27,8 +27,6 @@ Pada suatu aplikasi web, client berkomunikasi dengan server. Client akan melakuk
     path('html/', show_mywatchlist_html, name='show_mywatchlist_html'),
     path('xml/', show_mywatchlist_xml, name='show_mywatchlist_xml'),
     path('json/', show_mywatchlist_json, name='show_mywatchlist_json'),
-    path('json/<int:id>', show_mywatchlist_json_by_id, name='show_mywatchlist_json_by_id'),
-    path('xml/<int:id>', show_mywatchlist_xml_by_id, name='show_mywatchlist_xml_by_id'),
     ]
 6. Selanjutnya menambahkan "path('mywatchlist/', include('mywatchlist.urls'))" pada urls.py di project repository, yaitu django_project. Tujuannya adalah melakukan routing url di mywatchlist kepada view yang bersesuaian.
 7. Mengubah Procfile untuk melakukan loaddata objek MyWatchList dan melakukan deploy ke Heroku
