@@ -32,3 +32,15 @@ Pada suatu aplikasi web, client berkomunikasi dengan server. Client akan melakuk
     ]
 6. Selanjutnya menambahkan "path('mywatchlist/', include('mywatchlist.urls'))" pada urls.py di project repository, yaitu django_project. Tujuannya adalah melakukan routing url di mywatchlist kepada view yang bersesuaian.
 7. Mengubah Procfile untuk melakukan loaddata objek MyWatchList dan melakukan deploy ke Heroku
+
+# Screenshots Postman
+1. HTML
+![image](https://user-images.githubusercontent.com/87021641/191641391-23f0b854-e5bb-4811-85a1-14930774f688.png)
+
+
+2. JSON
+![image](https://user-images.githubusercontent.com/87021641/191641430-18005879-b75c-44bd-9d45-4108ce5a5f63.png)
+
+
+3. XML
+![image](https://user-images.githubusercontent.com/87021641/191641464-7679176b-eb7a-4978-9aa0-8db7d7140166.png)
