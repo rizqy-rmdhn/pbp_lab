@@ -7,7 +7,7 @@ Kelas: PBP-F
 
 Kode Asdos: DRY
 
-Deployment link : [link](https://tugas2pbpkiram.herokuapp.com/)
+Deployment link : [https://tugas2pbpkiram.herokuapp.com/mywatchlist](https://tugas2pbpkiram.herokuapp.com/mywatchlist)
 
 # Perbedaan JSON, XML, dan HTML
 * JSON atau JavaScript Object Notation merupakan suatu format yang menggunakan teks yang mudah dibaca manusia untuk menyimpan dan mentransmit data. Data tersebut berisikan attribute yang tersusun dalam pasangan key dan value. 
