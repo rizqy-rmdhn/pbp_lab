@@ -6,10 +6,18 @@ from django.core import serializers
 # TODO: Create your views here.
 def show_mywatchlist_html(request):
     data_mywatchlist = MyWatchList.objects.all()
+    watched_count = MyWatchList.objects.filter(watched=1).count()
+    not_watched_count = MyWatchList.objects.filter(watched=0).count()
+    msg = ""
+    if watched_count >= not_watched_count:
+          msg = "Selamat, kamu sudah banyak menonton!"
+    else:
+          msg = "Wah, kamu masih sedikit menonton!"
     context = {
                 'list_mywatchlist': data_mywatchlist,
                 'name': 'Muhammad Rizqy Ramadhan',
-                'student_id' : '2106632182'
+                'student_id' : '2106632182',
+                'message':msg
               }
     return render(request, "mywatchlist.html", context)
 
