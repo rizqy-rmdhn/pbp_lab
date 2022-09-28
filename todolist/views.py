@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Task
+from .forms import TaskForm
 import datetime
 from django.urls import reverse
 from django.shortcuts import render, redirect
@@ -56,3 +57,17 @@ def logout_user(request):
     response = HttpResponseRedirect(reverse('todolist:login'))
     response.delete_cookie('last_login')
     return response
+
+def create_task(request):
+    context = {'task_form' : TaskForm}
+    return render(request, 'create_task.html', context)
+
+def save_task(request):
+    form = TaskForm(request.POST or None)
+    if (form.is_valid and request.method == 'POST'):
+        form.save()
+        return HttpResponseRedirect('/')
+    else:
+        return HttpResponseRedirect('/')
+        
+        
