@@ -13,7 +13,8 @@ from django.contrib.auth.decorators import login_required
 # Create your views here.
 @login_required(login_url='/todolist/login/')
 def show_task_html(request):
-    task_data = Task.objects.all()
+    user_logged_in = request.user
+    task_data = Task.objects.filter(user=user_logged_in)
     context = {
                 'list_task': task_data,
                 'name': 'Muhammad Rizqy Ramadhan',
