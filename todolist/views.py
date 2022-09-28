@@ -77,12 +77,12 @@ def create_task(request):
 def update_task_status(request, id):
     task = Task.objects.get(id=id)
     if task: 
-        if task.finished:
-            task.finished = 0
+        if task.is_finished:
+            task.is_finished = 0
             task.save()
             messages.success(request, "Oops, turned you have not finished the task!")
         else:
-            task.finished = 1
+            task.is_finished = 1
             task.save()
             messages.success(request, "Yeay, you have finished the task!")
     else:

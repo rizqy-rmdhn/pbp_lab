@@ -30,7 +30,7 @@
             <th>{{task.title}}</th>
             <th>{{task.description}}</th>
             <th>{{task.get_is_finished_display}} 
-                <form action="{% url 'todolist:update_task_status' task.id %}" method="POST">
+                <form action="{% url 'todolist:update_status' task.id %}" method="POST">
                     {% csrf_token %}
                     <button>Change Status</button>
                 </form>
