@@ -10,9 +10,8 @@
 <h5>NPM: </h5>
 <b>{{NPM}}</b>
 
-<h4>User Logged In: </h4>
-<b>{{user.get_username}}</b>
-
+<p>Welcome {{user.get_username}}</p>
+<button><a href="{% url 'todolist:create_task' %}">Add New Task</a></button>
 
 <table>
     <tr>
@@ -45,7 +44,7 @@
     {% endfor %}
 </table>
 
-<h5>Sesi terakhir login: {{ last_login }}</h5>
+<h5>Last Login Session: {{ last_login }}</h5>
 <button><a href="{% url 'todolist:logout' %}">Logout</a></button>
 
 {% if messages %}
