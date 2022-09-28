@@ -20,6 +20,7 @@
     <th>Task Name</th>
     <th>Task Description</th>
     <th>Task Status</th>
+    <th>Delete Task</th>
 
     </tr>
     {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
@@ -28,7 +29,18 @@
             <th>{{task.date}}</th>
             <th>{{task.title}}</th>
             <th>{{task.description}}</th>
-            <th>{{task.get_is_finished_display}}</th>
+            <th>{{task.get_is_finished_display}} 
+                <form action="{% url 'todolist:update_task_status' task.id %}" method="POST">
+                    {% csrf_token %}
+                    <button>Change Status</button>
+                </form>
+            </th>
+            <th>
+                <form action="{% url 'todolist:delete_task' task.id %}" method="POST">
+                    {% csrf_token %}
+                    <button>Delete Task</button>
+                </form>
+            </th>
         </tr>
     {% endfor %}
 </table>

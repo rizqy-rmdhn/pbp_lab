@@ -74,23 +74,28 @@ def create_task(request):
     context = {'task_form' : TaskForm}
     return render(request, 'create_task.html', context)
 
-def update_finished_task(request, id):
+def update_task_status(request, id):
     task = Task.objects.get(id=id)
-    if task.finished:
-        task.finished = 0
-        task.save()
-        messages.success(request, "Oops, turned you have not finished the task!")
+    if task: 
+        if task.finished:
+            task.finished = 0
+            task.save()
+            messages.success(request, "Oops, turned you have not finished the task!")
+        else:
+            task.finished = 1
+            task.save()
+            messages.success(request, "Yeay, you have finished the task!")
     else:
-        task.finished = 1
-        task.save()
-        messages.success(request, "Yeay, you have finished the task!")
-    
+        messages.error(request, "Oops, the task can not be found")
     return HttpResponseRedirect(reverse("todolist:show_task_html"))
 
 def delete_task(request, id):
     task = Task.objects.get(id=id)
-    task.delete()
-    messages.success(request, "Successfully deleted the task!")
+    if task: 
+        task.delete()
+        messages.success(request, "Successfully deleted the task!")
+    else:
+        messages.error(request, "Oops, the task can not be found")
     return HttpResponseRedirect(reverse("todolist:show_task_html"))
     
         
