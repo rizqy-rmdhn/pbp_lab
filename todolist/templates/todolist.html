@@ -11,7 +11,8 @@
 <b>{{NPM}}</b>
 
 <h4>User Logged In: </h4>
-<b>{{NPM}}</b>
+<b>{{user.get_username}}</b>
+
 
 <table>
     <tr>
@@ -22,16 +23,25 @@
 
     </tr>
     {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
-    {% for barang in list_barang %}
+    {% for task in list_task %}
         <tr>
-            <th>{{barang.nama_barang}}</th>
-            <th>{{barang.harga_barang}}</th>
-            <th>{{barang.deskripsi}}</th>
+            <th>{{task.date}}</th>
+            <th>{{task.title}}</th>
+            <th>{{task.description}}</th>
+            <th>{{task.get_is_finished_display}}</th>
         </tr>
     {% endfor %}
 </table>
 
 <h5>Sesi terakhir login: {{ last_login }}</h5>
-<button><a href="{% url 'wishlist:logout' %}">Logout</a></button>
+<button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+
+{% if messages %}
+<ul class="msg">
+  {% for message in messages %}
+  <li>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
 
 {% endblock content %}

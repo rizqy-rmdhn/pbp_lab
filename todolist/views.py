@@ -15,7 +15,7 @@ from django.contrib.auth.decorators import login_required
 @login_required(login_url='/todolist/login/')
 def show_task_html(request):
     user_logged_in = request.user
-    task_data = Task.objects.filter(user=user_logged_in)
+    task_data = Task.objects.filter(user=user_logged_in).all()
     context = {
                 'list_task': task_data,
                 'name': 'Muhammad Rizqy Ramadhan',
@@ -59,15 +59,38 @@ def logout_user(request):
     return response
 
 def create_task(request):
+    if (request.method == 'POST'):
+        form = TaskForm(request.POST)
+        if (form.is_valid()):
+            new_task = form.save(commit=False)
+            new_task.user = request.user
+            new_task.save()
+            messages.success(request, "Succesfully created task!")
+        else:
+            messages.error(request, "Invalid!")
+            
+        return HttpResponseRedirect(reverse("todolist:show_task_html"))
+    
     context = {'task_form' : TaskForm}
     return render(request, 'create_task.html', context)
 
-def save_task(request):
-    form = TaskForm(request.POST or None)
-    if (form.is_valid and request.method == 'POST'):
-        form.save()
-        return HttpResponseRedirect('/')
+def update_finished_task(request, id):
+    task = Task.objects.get(id=id)
+    if task.finished:
+        task.finished = 0
+        task.save()
+        messages.success(request, "Oops, turned you have not finished the task!")
     else:
-        return HttpResponseRedirect('/')
-        
+        task.finished = 1
+        task.save()
+        messages.success(request, "Yeay, you have finished the task!")
+    
+    return HttpResponseRedirect(reverse("todolist:show_task_html"))
+
+def delete_task(request, id):
+    task = Task.objects.get(id=id)
+    task.delete()
+    messages.success(request, "Successfully deleted the task!")
+    return HttpResponseRedirect(reverse("todolist:show_task_html"))
+    
         

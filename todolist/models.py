@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-User = models.Use
 # Create your models here.
 class Task(models.Model):
     FINISHED_STATUS = [
