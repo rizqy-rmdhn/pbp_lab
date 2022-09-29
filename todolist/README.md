@@ -11,19 +11,19 @@ Deployment link : [https://tugas2pbpkiram.herokuapp.com/todolist](https://tugas2
 
 ## Kegunaan CSRF Token
 
-CSRF token atau {% csrf_token %} memiliki fungsi sebagai pelindung user dari ancaman _Cross Site Request Forgery_ atau pemalsuan request. _Cross Site Request Forgery_ merupakan suatu ancaman di mana pelaku akan membuat korban melakukan proses request yang bisa jadi tidak diinginkan kepada suatu website. Cara kerja hal tersebut adalah dengan menambahkan token pada setiap request yang dikirim user dan dilakukan pengecekan. Contoh kasus CSRF misalnya, pada suatu website user secara tidak sengaja mengklik sebuah hyperlink dengan alamat http://bankpalsu.com/transfer.do?acct=PelakuA&jumlah=100 untuk mentransfer 100 USD ke PelakuA. Tanpa adanya perlindungan CSRF, ketika user mengklik link tersebut, maka request user akan diproses dan uang akan ditransfer. Sehingga, jika tidak ada CSRF token atau {% csrf_token %} pada elemen '<form>', maka website berpotensi mengalami ancaman CSRF.
+CSRF token atau {% csrf_token %} memiliki fungsi sebagai pelindung user dari ancaman _Cross Site Request Forgery_ atau pemalsuan request. _Cross Site Request Forgery_ merupakan suatu ancaman di mana pelaku akan membuat korban melakukan proses request yang bisa jadi tidak diinginkan kepada suatu website. Cara kerja hal tersebut adalah dengan menambahkan token pada setiap request yang dikirim user dan dilakukan pengecekan. Contoh kasus CSRF misalnya, pada suatu website user secara tidak sengaja mengklik sebuah hyperlink dengan alamat http://bankpalsu.com/transfer.do?acct=PelakuA&jumlah=100 untuk mentransfer 100 USD ke PelakuA. Tanpa adanya perlindungan CSRF, ketika user mengklik link tersebut, maka request user akan diproses dan uang akan ditransfer. Sehingga, jika tidak ada CSRF token atau {% csrf_token %} pada elemen '\<form>', maka website berpotensi mengalami ancaman CSRF.
 
 ## Pembuatan Form secara Manual
   
 Form dapat dibuat secara manual tanpa menggunakan generator seperti {{ form.as_table }}. Generator {{ form.as_table }} atau generator lainnya pada dasarnya akan merender form secara otomatis sesuai dengan tagnya. Untuk {{ form.as_table }} akan merender form sebagai tabel dengan tag <tr>.
   
-Untuk membuat form dapat dibuat secara manual memanfaatkan tag <input> yang kemudian diisi dengan parameter/attribute "name" dan "type" sesuai kebutuhan. Parameter type akan menentukan tipe input/form yang ditampilkan, sedangkan parameter name akan membuat nama form tersebut. Contoh penggunaannya adalah <input type="text" id="fname" name="fname">. Kita juga dapat memanfaatkan tag <form> untuk menandakan elemen-elemen form yang berisikan berbagai input. Contohnya 
-<form>
-  <label for="fname">First name:</label><br>
-  <input type="text" id="fname" name="fname"><br>
-  <label for="lname">Last name:</label><br>
-  <input type="text" id="lname" name="lname">
-</form>
+Untuk membuat form dapat dibuat secara manual memanfaatkan tag <input> yang kemudian diisi dengan parameter/attribute "name" dan "type" sesuai kebutuhan. Parameter type akan menentukan tipe input/form yang ditampilkan, sedangkan parameter name akan membuat nama form tersebut. Contoh penggunaannya adalah \<input type="text" id="fname" name="fname">. Kita juga dapat memanfaatkan tag <form> untuk menandakan elemen-elemen form yang berisikan berbagai input. Contohnya 
+\<form>
+  \<label for="fname">First name:</label><br>
+  \<input type="text" id="fname" name="fname"><br>
+  \<label for="lname">Last name:</label><br>
+  \<input type="text" id="lname" name="lname">
+\</form>
 
 ## Penjelasan Alur Submisi Data dari Form
   
