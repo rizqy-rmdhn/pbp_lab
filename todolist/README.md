@@ -17,7 +17,8 @@ CSRF token atau {% csrf_token %} memiliki fungsi sebagai pelindung user dari anc
   
 Form dapat dibuat secara manual tanpa menggunakan generator seperti {{ form.as_table }}. Generator {{ form.as_table }} atau generator lainnya pada dasarnya akan merender form secara otomatis sesuai dengan tagnya. Untuk {{ form.as_table }} akan merender form sebagai tabel dengan tag <tr>.
   
-Untuk membuat form dapat dibuat secara manual memanfaatkan tag <input> yang kemudian diisi dengan parameter/attribute "name" dan "type" sesuai kebutuhan. Parameter type akan menentukan tipe input/form yang ditampilkan, sedangkan parameter name akan membuat nama form tersebut. Contoh penggunaannya adalah \<input type="text" id="fname" name="fname">. Kita juga dapat memanfaatkan tag <form> untuk menandakan elemen-elemen form yang berisikan berbagai input. Contohnya 
+Untuk membuat form dapat dibuat secara manual memanfaatkan tag <input> yang kemudian diisi dengan parameter/attribute "name" dan "type" sesuai kebutuhan. Parameter type akan menentukan tipe input/form yang ditampilkan, sedangkan parameter name akan membuat nama form tersebut. Contoh penggunaannya adalah \<input type="text" id="fname" name="fname">. Kita juga dapat memanfaatkan tag \<form> untuk menandakan elemen-elemen form yang berisikan berbagai input. Contohnya
+  
 \<form>
   \<label for="fname">First name:</label><br>
   \<input type="text" id="fname" name="fname"><br>
@@ -40,13 +41,23 @@ Untuk membuat form dapat dibuat secara manual memanfaatkan tag <input> yang kemu
 ## Proses Pengerjaan
   
 1.Memanfaatkan repositori tugas PBP yang sudah tersedia, membuka project dan aktivasi venv.
+  
 2. Membuat app baru bernama todolist dengan command python manage.py startapp todolist
+  
 3. Menambahkan app baru ke dalam INSTALLED_APPS pada settings.py pada folder project kita, yaitu folder project_django
+  
 4. Membuat file urls.py pada folder todolist yang nantinya akan berisikan routing dari view app todolist
+  
 5. Melakukan routing todolist ke `project_django/urls.py` dengan menambahkan path('todolist/', include('todolist.urls')) pada urlpatterns di urls.py folder project_django
+  
 6. Membuat model Task pada models.py dengan attribute sesuai ketentuan, yaitu user, date, title, description, dan is_finished. Attribute user merupakan attribute foreignkey.
+  
 7. Buat views sesuai kebutuhan yaitu untuk kegiatan register, login, logout, halaman utama, membuat task, mengupdate task, dan mendelete task.
+  
 8. Membuat file .html pada folder template di app todolist sesuai views dan kebutuhan.
+  
 9. Menambahkan routing views dari todolist ke todolist/urls.py pada urlpattern dengan bantuan path().
+  
 10. Push repository ke github dan melakukan deploy ke Heroku
+  
 11. Melakukan CreateSuperUser untuk membuat akun admin dan menambahkan data dummy. 
