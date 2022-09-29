@@ -20,7 +20,6 @@ def show_task_html(request):
                 'list_task': task_data,
                 'name': 'Muhammad Rizqy Ramadhan',
                 'NPM': '2106632182',
-                'last_login': request.COOKIES['last_login'],
               }
     return render(request, "todolist.html", context)
 
