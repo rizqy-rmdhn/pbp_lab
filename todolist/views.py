@@ -58,19 +58,13 @@ def logout_user(request):
     return response
 
 def create_task(request):
-    if (request.method == 'POST'):
-        form = TaskForm(request.POST)
-        if (form.is_valid()):
-            new_task = form.save(commit=False)
-            new_task.user = request.user
-            new_task.save()
-            messages.success(request, "Succesfully created task!")
-        else:
-            messages.error(request, "Invalid!")
-            
+    if request.method == 'POST':
+        title = request.POST.get('title')
+        description = request.POST.get('description')
+        user = request.user
+        Task.objects.create(title=title, description=description, user=user)
         return HttpResponseRedirect(reverse("todolist:show_task_html"))
-    
-    context = {'task_form' : TaskForm}
+    context = {} 
     return render(request, 'create_task.html', context)
 
 def update_task_status(request, id):

@@ -1,8 +1,69 @@
 {% extends 'base.html' %}
+{% load static %}
 
+{% block meta %}
+<title> TodoList </title>
+<head>
+    <link rel="stylesheet" href={% static 'todolist.css' %}>
+</head>
+{% endblock meta %}
 {% block content %}
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="">WishList by {{ name }} - {{ NPM }}</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>        
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <button><a href="{% url 'todolist:create_task' %}">Add New Task</a></button>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Hello, {{user.get_username}}!
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="logout/">Logout</a></li>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+</nav>
+<br></br>
+<div class="container">
+    <div class="row">
+      <div class="col">
+        {% for task in list_task %}
+        <div class="card">
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-green">
+                <span class="badge badge-1"> {{ task.get_is_finished_display }}  </span>
+              </span>
+          <h3>{{task.title}}</h3>
+          <small><i class="far fa-clock"></i> {{task.date}}</small>
+          <p>{{task.description}}</p>
+          <th>{{task.get_is_finished_display}} 
+            <form action="{% url 'todolist:update_status' task.id %}" method="POST">
+                {% csrf_token %}
+                <button>Change Status</button>
+            </form>
+        </th>
+        <th>
+            <form action="{% url 'todolist:delete_task' task.id %}" method="POST">
+                {% csrf_token %}
+                <button>Delete Task</button>
+            </form>
+        </th>
+        </div>
+        <br></br>
+        {% endfor %}
+      </div>
+    </div>
+</div>
 
-<h1>Assignment 4 PBP/PBD</h1>
+<div class="container-fluid">
+    <p>Made with &#10084 by {{ name }} - {{ NPM }}</p>
+</div>
+{% endblock content %}
+{% comment %} <h1>Assignment 4 and 5 PBP/PBD</h1>
 
 <h3>Nama: {{name}}</h3>
 
@@ -19,7 +80,6 @@
     <th>Delete Task</th>
 
     </tr>
-    {% comment %} Tambahkan data di bawah baris ini {% endcomment %}
     {% for task in list_task %}
         <tr>
             <th>{{task.date}}</th>
@@ -42,7 +102,7 @@
 </table>
 
 <button><a href="{% url 'todolist:create_task' %}">Add New Task</a></button>
-<button><a href="{% url 'todolist:logout' %}">Logout</a></button>
+<button><a href="{% url 'todolist:logout' %}">Logout</a></button> 
 
 {% if messages %}
 <ul class="msg">
@@ -51,5 +111,5 @@
   {% endfor %}
 </ul>
 {% endif %}
+{% endcomment %}
 
-{% endblock content %}

@@ -1,29 +1,46 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
 {% block meta %}
 <title>Add New Task</title>
 {% endblock meta %}
 
 {% block content %}
-<h1>Add New Task</h1>
 
-<form action="{% url 'todolist:create_task' %}" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <table>
-    {{ task_form.as_table }}
-    <tr>
-        <td></td>
-        <td><input type="submit" value="Add New Task" /></td>
-      </tr>
-    </table>
-</form>
-
-{% if messages %}
-<ul class="msg">
-  {% for message in messages %}
-  <li>{{ message }}</li>
-  {% endfor %}
-</ul>
-{% endif %}
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div class="card bg-dark text-white" style="border-radius: 1rem;">
+            <div class="card-body p-5 text-center">
+  
+              <div class="mb-md-5 mt-md-4 pb-5">
+  
+                <h2 class="fw-bold mb-2 text-uppercase">Create Task</h2>
+                <p class="text-white-50 mb-5">Please enter the title and description!</p>
+                
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    <div class="form-outline form-white mb-4">
+                    <input type="text" name="title" id="typeUsernameX" class="form-control form-control-lg" />
+                    <label class="form-label" name="title" for="typeUsernameX">Title</label>
+                    </div>
+    
+                    <div class="form-outline form-white mb-4">
+                    <input type="text" name="description" id="typePasswordX" class="form-control form-control-lg" />
+                    <label class="form-label" name="description" for="typePasswordX">Description</label>
+                    </div>
+    
+                    <button class="btn btn-outline-light login_btn px-5" type="submit", value="Create">Create</button>
+                </form>
+  
+              </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
 {% endblock content %}
