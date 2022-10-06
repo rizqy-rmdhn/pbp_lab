@@ -107,23 +107,35 @@ Untuk membuat form dapat dibuat secara manual memanfaatkan tag <input> yang kemu
   
 1. Simple selector adalah selector sederhana yang memilih elemen berdasarkan nama, id, atau class pada dokumen HTML. Jenis-jenisnya terdapat tiga buah: id selector, element selector, dan class selector
   a. id selector merupakan selector yang memanfaatkan id di tag HTML sehingga perlu didefinisikan 
+  
   b. Element selector merupakan selector yang memanfaatkan tag HTML
+  
   c. Class selector merupakan selector dengan memanfaatkan class pada tag HTML sehingga perlu didefinisikan terlebih dahulu
   
 2. Combinator selector merupakan selector yang memilih kombinasi/kumpulan elemen menurut hubungannya. Jenis-jenisnya terdapat empat jenis, yaitu descendant selector, child selector, adjacent sibling selector, general sibling selector.
   
   a. Descendant selector adalah selector yang memilih semua elemen turunan (descendant) dari suatu elemen tertentu.
+  
   b. Child selector adalah selector yang memilih semua elemen child dari suatu elemen tertentu
+  
   c. Adjacent sibling selector adalah selector yang memilih semua elemen yang posisinya berada setelah suatu elemen dengan parent yang sama.
+  
   d. General sibling selector adalah selector yang memilih semua elemen sibling berikutnya dari elemen tertentu
   
 3. Pseudo-class selector merupakan selector dengan pemilihan elemen menurut suatu keadaan. Terdapat tujuh jenis pseudo-class selector
+  
   a. :active adalah pemilih semua elemen yang aktif
+  
   b. :checked adalah pemilih semua elemen yang telah dicentang
+  
   c. :disabled adalah pemilih semua elemen yang dinonaktifkan (disabled)
+  
   d. :enabled adalah pemilih semua elemen yang diaktifkan (enabled)
+  
   e. :link adala pemilih semua link yang belum terkunjungi
+  
   f. :hover adalah pemilih semua elemen dengan kursor di atasnya
+  
   g. :visited -adalah pemilih link yang terkunjungi
   
 4. Atribute selector merupakan pemilih elemen menurut nama atributnya atau nilai atributnya
