@@ -1,0 +1,244 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block meta %}
+<title> TodoList </title>
+<head>
+    <link rel="stylesheet" href={% static 'todolist.css' %}>
+</head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script>
+  function delete_task(pk) {
+    $.ajax({
+      url: "delete-task/" + pk,
+      success: function() {
+        
+      }    
+    });
+  }
+  function update_task(pk) {
+    $.ajax({
+      url: "update-status/" + pk,
+      success: function() {
+        
+      }    
+    });
+  }
+</script>
+{% endblock meta %}
+{% block content %}
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="">WishList by {{ name }} - {{ NPM }}</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>        
+      <div class="collapse navbar-collapse" id="navbarMain">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <button><a href="{% url 'todolist:create_task' %}">Add New Task (Tugas 5)</a></button>
+            <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#add_modal">
+              Add Task (Tugas 6)
+            </button>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Hello, {{user.get_username}}!
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="logout/">Logout</a></li>
+          </li>
+        </ul>
+      </div><!--/.nav-collapse -->
+    </div>
+</nav>
+<br></br>
+<div class="container" id="todolist_body">
+    <div class="row">
+      <div class="col" id="todolist_col">
+        {% comment %} {% for task in list_task %} {% endcomment %}
+        {% comment %} <div class="card"> {% endcomment %}
+            {% comment %} <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-green">
+                <span class="badge badge-1"> {{ task.get_is_finished_display }}  </span> {% endcomment %}
+                <script type="text/javascript">
+                  $.getJSON("{% url 'todolist:get_json' %}", function(data) {
+                    if (data.length == 0) {
+                      // If task is empty
+                      var pesan = document.createElement('h2');
+                      pesan.innerHTML = 'No Task Yet';
+                      pesan.style.margin = "0px 10px";
+                
+                      $("#todolist_body").append(pesan);
+                
+                    }  
+                    else {
+                          $(data).each(function(key, value) {
+
+                            var buttonRemove = document.createElement('button');
+                            buttonRemove.classList.add('btn', 'btn-danger');
+                            buttonRemove.style.marginRight = "10px";
+                            buttonRemove.setAttribute('onclick', `delete_task(${value.pk})`);
+                  
+                            var link = document.createElement('a');
+                            var linkText = document.createTextNode("Remove");
+                            link.appendChild(linkText);
+                            link.classList.add('link-light', 'text-decoration-none');
+                            buttonRemove.appendChild(link)
+
+                            var buttonUpdate = document.createElement('button');
+                            buttonUpdate.classList.add('btn', 'btn-primary');
+                            buttonUpdate.style.marginRight = "10px";
+                            buttonUpdate.setAttribute('onclick', `update_task(${value.pk})`);
+                  
+                            var link = document.createElement('a');
+                            var linkText = document.createTextNode("Update");
+                            link.appendChild(linkText);
+                            link.classList.add('link-light', 'text-decoration-none');
+                  
+                            buttonUpdate.appendChild(link);
+
+                            if (value.fields.is_finished) {
+                              $("#todolist_col").append($("<div class=\"card\">")
+                                  .append($("<h3>").append(value.fields.title))
+                                  .append($("<small>").append(value.fields.date))
+                                  .append($("<p>").append(value.fields.description))
+                                  .append($("<h5>").append("Finished"))
+                                  .append($("<div>")
+                                    .append(buttonUpdate))
+                                  .append($("<div>")
+                                    .append(buttonRemove))
+                                  .append($("<br>")));
+                            }
+                             else {
+                              $("#todolist_col").append($("<div class=\"card\">")
+                                  .append($("<h3>").append(value.fields.title))
+                                  .append($("<small>").append(value.fields.date))
+                                  .append($("<p>").append(value.fields.description))
+                                  .append($("<h5>").append("Not finished"))
+                                  .append($("<div>")
+                                  .append(buttonUpdate))
+                                  .append($("<div>")
+                                  .append(buttonRemove))
+                                  .append($("<br>")));
+                                  
+                            };
+                          })
+                    }
+                    })
+              
+                  .done(function(){
+                      console.log("successfully loaded!");
+                  })
+              
+                  .fail(function(e){
+                      console.log('error:');
+                      console.error(e);
+                  });        
+              </script>
+              <br></br>
+              </span>
+          
+          {% comment %} <h3>{{task.title}}</h3>
+          <small><i class="far fa-clock"></i> {{task.date}}</small>
+          <p>{{task.description}}</p> {% endcomment %}
+          {% comment %} <th>{{task.get_is_finished_display}}  {% endcomment %}
+            {% comment %} <th><form action="{% url 'todolist:update_status' task.id %}" method="POST">
+                {% csrf_token %}
+                <button>Change Status</button>
+            </form>
+        </th>
+        <th>
+            <form action="{% url 'todolist:delete_task' task.id %}" method="POST">
+                {% csrf_token %}
+                <button>Delete Task</button>
+            </form>
+        </th> {% endcomment %}
+        {% comment %} </div> {% endcomment %}
+        <br></br>
+        {% comment %} {% endfor %} {% endcomment %}
+      </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="add_modal" tabindex="-1" aria-labelledby="add_task_modal" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="add_task_modal_label">Add New Task w/ AJAX</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="add_task" method="POST" action="{% url 'todolist:create_task_ajax'%}">
+          {% csrf_token %}
+  
+              <p>Title:</p>
+              <input type="text" id="title" name="title" placeholder="Title" class="form-control"><br/>
+                      
+              <p>Description:</p>
+              <textarea cols="100" id="description" rows="10" name="description" placeholder="Description" style="max-width: 100%;"></textarea><br/>
+              
+          <div style="margin: 10px auto;">
+              <input class="btn btn-primary" type="submit" name="submit" value="Add">
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid">
+    <p>Made with &#10084 by {{ name }} - {{ NPM }}</p>
+</div>
+{% endblock content %}
+{% comment %} <h1>Assignment 4 and 5 PBP/PBD</h1>
+
+<h3>Nama: {{name}}</h3>
+
+<h3>NPM: {{NPM}}</h3>
+
+<p>Welcome, {{user.get_username}}!</p>
+
+<table>
+    <tr>
+    <th>Date Created</th>
+    <th>Task Name</th>
+    <th>Task Description</th>
+    <th>Task Status</th>
+    <th>Delete Task</th>
+
+    </tr>
+    {% for task in list_task %}
+        <tr>
+            <th>{{task.date}}</th>
+            <th>{{task.title}}</th>
+            <th>{{task.description}}</th>
+            <th>{{task.get_is_finished_display}} 
+                <form action="{% url 'todolist:update_status' task.id %}" method="POST">
+                    {% csrf_token %}
+                    <button>Change Status</button>
+                </form>
+            </th>
+            <th>
+                <form action="{% url 'todolist:delete_task' task.id %}" method="POST">
+                    {% csrf_token %}
+                    <button>Delete Task</button>
+                </form>
+            </th>
+        </tr>
+    {% endfor %}
+</table>
+
+<button><a href="{% url 'todolist:create_task' %}">Add New Task</a></button>
+<button><a href="{% url 'todolist:logout' %}">Logout</a></button> 
+
+{% if messages %}
+<ul class="msg">
+  {% for message in messages %}
+  <li>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% endcomment %}
+
