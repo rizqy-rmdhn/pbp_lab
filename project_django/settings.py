@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'katalog',
     'mywatchlist',
     'todolist',
-    'crispy_forms',
 ]
 
 MIDDLEWARE = [
